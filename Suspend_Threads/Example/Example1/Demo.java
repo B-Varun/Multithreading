@@ -7,6 +7,7 @@ System.out.println("Full Traffic");
 Bus b = new Bus();
 Car c = new Car(b);
 b.start();
+b.interrupt();
 c.start();
 c.join();
 System.out.println("Cleared  Traffic");
