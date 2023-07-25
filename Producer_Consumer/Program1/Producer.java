@@ -7,17 +7,28 @@ public Producer(Queue queue){
  this.queue = queue;
 }
 
+public void fillQueue(){
+for(int i=0; i<10; i++){
+  System.out.println("Producer produced : "+i);
+  queue.enqueue(i);
+}
+}
+
 public void run(){
-System.out.println("Producer run");
 synchronized(queue){
 while(true){
-while(!queue.isFull()){
- for(int i=0; i<100; i++)
-   if(!queue.isFull())
-      queue.enqueue(i);
- }
-System.out.println("Producer trying to notify");
-queue.notifyAll();
+ if(queue.isFull()){
+//System.out.print("is queue empty : "+queue.isEmpty());
+try{ queue.wait(); }catch(InterruptedException e){
+// System.out.println("\n\nIException in Producer");
+}
+//System.out.println("Queue already full, Producer waiting");
+}
+else{
+ fillQueue();
+//System.out.println("Producer notify queue full");
+ queue.notify();
+}
 }
 }
 }

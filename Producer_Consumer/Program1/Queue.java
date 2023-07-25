@@ -41,7 +41,7 @@ public boolean isFull(){
 }
 
 public boolean isEmpty(){
- return (front == -1) ? true : false;
+ return (front == -1 && rear == -1) ? true : false;
 }
 
 public int front(){
