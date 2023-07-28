@@ -9,9 +9,10 @@ public Consumer(Queue q){
 public void run(){
 synchronized(queue){
 while(true){
-System.out.println(Thread.currentThread().getName());
-if(queue.isEmpty())
+//System.out.println(Thread.currentThread().getName());
+if(queue.isEmpty()){
  try{queue.wait(); } catch(InterruptedException e){}
+}
 else{
 while(!queue.isEmpty()){
  int ele = queue.dequeue();
