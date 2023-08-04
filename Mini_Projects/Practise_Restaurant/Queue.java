@@ -1,17 +1,18 @@
 package com.ds.queue;
+import com.hotel.order.Order;
 
 public class Queue{
 int size;
-Object[] queue;
+Order[] queue;
 int front, rear;
 
 public Queue(int s){
  size = s;
- queue = new Object[size];
+ queue = new Order[size];
  front = rear = -1;
 }
 
-public void enqueue(Object order){
+public void enqueue(Order order){
  if(isEmpty()){
   front = rear = 0;
   queue[rear] = order;
@@ -22,11 +23,11 @@ public void enqueue(Object order){
    queue[++rear] = order;
 }
 
-public Object dequeue(){
+public Order dequeue(){
  if(isEmpty())
   return null;
  else if(front == rear){
-   Object ele = queue[front];
+   Order ele = queue[front];
    front = rear = -1;
    return ele;
  }
@@ -34,11 +35,11 @@ public Object dequeue(){
    return queue[front++];  
 }
 
-public Object front(){
+public Order front(){
  return isEmpty() ? null : queue[front];
 }
 
-public Object rear(){
+public Order rear(){
  return isEmpty() ? null : queue[rear];
 }
 
