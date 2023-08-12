@@ -23,9 +23,9 @@ public class CustomerGenerator extends Thread{
 		try {
 			while(true) {
 				for(int i=0; i<10; i++)
-					queue.enqueue(new Customer(random.nextInt(0,3), "Customer-"+getCounter()));
+					queue.enqueue(new Customer(random.nextInt(0,10), "Customer-"+getCounter()));
 				System.out.println("\n\n------Generated 10 customers------\n\n");
-				Thread.sleep(60000);
+				Thread.sleep(5000);
 			}
 		}catch(InterruptedException e) {
 			System.out.println("\n\nCustomer Generator thread interrupted while creating new Customers.\n\n");

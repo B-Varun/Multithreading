@@ -19,7 +19,9 @@ public class Teller extends Thread{
 					Thread.sleep(1000);
 					continue;
 				}
-				customer = queue.dequeue();
+				synchronized(queue) {
+					customer = queue.dequeue();
+				}
 				if(customer!=null) {
 					int customerServiceTime = customer.serviceTime;
 					System.out.println(Thread.currentThread().getName()+" serving "+customer);
